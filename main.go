@@ -1,10 +1,22 @@
 package main
 
-// #cgo LDFLAGS: -L/Users/ivar/Utveckling/golang/src/cgotest/clib -lclib -lstdc++
-// #cgo CFLAGS: -I/Users/ivar/Utveckling/golang/src/cgotest/clib
-// #include "clib.h"
+import "fmt"
+
+/*
+#include <stdio.h>
+extern void F();
+*/
 import "C"
 
+//export G
+func G() {
+	fmt.Println("Gaitan!")
+}
+
+func Example() {
+	C.F()
+}
+
 func main() {
-	C.hello_Cpp()
+	Example()
 }
