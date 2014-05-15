@@ -2,9 +2,9 @@ package main
 
 /*
 #cgo CFLAGS: -I .
-#cgo LDFLAGS: -L . -lc-lib -lstdc++
+#cgo LDFLAGS: -lstdc++
 
-#include "c-lib.h"
+#include "cpp-lib.h"
 
 */
 import "C"
@@ -14,8 +14,7 @@ import (
 )
 
 func main() {
-	arg := 4
-	fmt.Printf("Go.main(): calling C function with arg %d\n", arg)
-	arg = int(C.some_c_func(C.int(arg)))
-	fmt.Printf("Go.main(): C function returned with result %d\n", arg)
+	arg1 := 4
+	arg2 := int(C.some_cpp_func(C.int(arg1)))
+	fmt.Printf("Go.main(): C++ function took %d and returned %d\n", arg1, arg2)
 }
